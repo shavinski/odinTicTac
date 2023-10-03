@@ -1,0 +1,24 @@
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.game-board {
+    width: 350px;
+    height: 350px;
+    border: 2px black solid;
+}
+
+.game-board td {
+    border: 1px black solid;
+}
+
+@media (min-width: 768px) {
+
+    /* Styles for tablets */
+    .game-board {
+        width: 450px;
+        height: 450px;
+    }
+}
