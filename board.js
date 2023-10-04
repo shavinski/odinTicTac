@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 class Board {
     constructor() {
         this.height = 3;
@@ -23,7 +21,6 @@ class Board {
                 td.className = `${x}-${y}`;
 
                 td.addEventListener('click', () => {
-                    console.log(gameController.activePlayer);
                     if (gameController.activePlayer === 'playerOne') {
                         playerOne.placePiece(td, gameController);
                     } else {
