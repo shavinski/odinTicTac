@@ -1,6 +1,5 @@
 "use strict";
 
-const boardContainer = document.querySelector(".board-container");
 
 
 class Board {
@@ -10,7 +9,7 @@ class Board {
         this.board = [];
     }
 
-    createBoard() {
+    createBoard(boardContainer, controller) {
         const board = document.createElement('table')
         board.className = 'game-board'
 
@@ -22,6 +21,21 @@ class Board {
                 row.push(null);
                 const td = document.createElement('td');
                 td.className = `${x}-${y}`;
+
+                td.addEventListener('click', () => {
+                    if (td.innerHTML !== "") {
+                        console.log('Silly goose this box is taken!')
+                        return;
+                    } else if (controller.activePlayer === 'playerOne') {
+                        td.innerHTML = 'X'
+                        this.board[x][y] = 'X'
+                    } else {
+                        td.innerHTML = 'O'
+                        this.board[x][y] = 'O'
+                    }
+                    controller.switchActivePlayer();
+                })
+
                 tr.appendChild(td);
             }
 
