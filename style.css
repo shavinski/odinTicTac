@@ -12,6 +12,11 @@
 
 .game-board td {
     border: 1px black solid;
+    text-align: center;
+    width: 33.3%;
+    height: 33.3%;
+    font-size: 4em;
+    font-weight: 900;
 }
 
 @media (min-width: 768px) {

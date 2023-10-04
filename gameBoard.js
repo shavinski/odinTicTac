@@ -2,10 +2,12 @@
 
 const boardContainer = document.querySelector(".board-container");
 
-class board {
+
+class Board {
     constructor() {
         this.height = 3;
         this.width = 3;
+        this.board = [];
     }
 
     createBoard() {
@@ -14,16 +16,16 @@ class board {
 
         for (let x = 0; x < this.width; x++) {
             const tr = document.createElement('tr');
+            const row = [];
 
             for (let y = 0; y < this.height; y++) {
+                row.push(null);
                 const td = document.createElement('td');
                 td.className = `${x}-${y}`;
-                td.addEventListener('click', () => {
-                    td.style.background = 'red'
-                })
                 tr.appendChild(td);
             }
 
+            this.board.push(row);
             board.appendChild(tr);
         }
 
@@ -31,4 +33,4 @@ class board {
     }
 }
 
-export default board;
+export default Board;
