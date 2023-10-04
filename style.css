@@ -7,11 +7,12 @@
 .game-board {
     width: 350px;
     height: 350px;
-    border: 2px black solid;
+    /* border: 2px black solid; */
 }
 
 .game-board td {
-    border: 1px black solid;
+    border-radius: 15px;
+    background-color: rgb(218, 218, 218);
     text-align: center;
     width: 33.3%;
     height: 33.3%;
@@ -20,8 +21,6 @@
 }
 
 @media (min-width: 768px) {
-
-    /* Styles for tablets */
     .game-board {
         width: 450px;
         height: 450px;
