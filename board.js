@@ -9,7 +9,7 @@ class Board {
         this.board = [];
     }
 
-    createBoard(boardContainer, controller) {
+    createBoard(boardContainer, gameController, playerOne, playerTwo) {
         const board = document.createElement('table')
         board.className = 'game-board'
 
@@ -23,18 +23,13 @@ class Board {
                 td.className = `${x}-${y}`;
 
                 td.addEventListener('click', () => {
-                    if (td.innerHTML !== "") {
-                        console.log('Silly goose this box is taken!')
-                        return;
-                    } else if (controller.activePlayer === 'playerOne') {
-                        td.innerHTML = 'X'
-                        this.board[x][y] = 'X'
+                    console.log(gameController.activePlayer);
+                    if (gameController.activePlayer === 'playerOne') {
+                        playerOne.placePiece(td, gameController);
                     } else {
-                        td.innerHTML = 'O'
-                        this.board[x][y] = 'O'
+                        playerTwo.placePiece(td, gameController);
                     }
-                    controller.switchActivePlayer();
-                })
+                });
 
                 tr.appendChild(td);
             }
