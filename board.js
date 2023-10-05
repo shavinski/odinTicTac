@@ -11,7 +11,7 @@ class Board {
     /**
      * Creates player board by creating a table with rows and tds 
      * 
-     * @param {HTMLBodyElement} boardContainer - HTML Element where the dynamically created board will be appended 
+     * @param {HTMLElement} boardContainer - HTML Element where the dynamically created board will be appended 
      * @param {Object} gameController - The game controller object responsible for keeping track of active player and winner
      * @param {Object} playerOne - The object representing player one
      * @param {Object} playerTwo - The object representing player two
