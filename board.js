@@ -9,16 +9,14 @@ class Board {
 
 
     /**
+     * Creates player board by creating a table with rows and tds 
      * 
-     * @param {*} boardContainer 
-     * @param {*} gameController 
-     * @param {*} playerOne 
-     * @param {*} playerTwo 
-     * 
-     * 
+     * @param {HTMLBodyElement} boardContainer - HTML Element where the dynamically created board will be appended 
+     * @param {Object} gameController - The game controller object responsible for keeping track of active player and winner
+     * @param {Object} playerOne - The object representing player one
+     * @param {Object} playerTwo - The object representing player two
      * 
      */
-
     createBoard(boardContainer, gameController, playerOne, playerTwo) {
         const board = document.createElement('table')
         board.className = 'game-board'
