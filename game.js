@@ -17,4 +17,3 @@ const playerOne = new Player('Player One', '❌');
 const playerTwo = new Player('Player Two', '⭕');
 
 board.createBoard(boardContainer, gameController, playerOne, playerTwo);
-

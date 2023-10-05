@@ -17,6 +17,7 @@ class Player {
      * 
      */
     placePiece(td, gameController, board) {
+
         if (td.innerHTML !== "") {
             console.log('Silly goose this box is taken!')
             return;
@@ -26,8 +27,13 @@ class Player {
         const [x, y] = td.className.split('-');
         board[x][y] = this.piece
 
-        gameController.switchActivePlayer();
-        gameController.determineWinOrTie(board);
+        gameController.determineWinOrTie(board)
+
+        if (!gameController.winner) {
+            gameController.switchActivePlayer(board);
+        } else {
+            console.log('winner');
+        }
 
         return true;
     }

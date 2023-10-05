@@ -28,7 +28,6 @@ class GameController {
                 board[i][1] === board[i][2]
             ) {
                 this.winner = board[i][0] === '❌' ? 'Player One' : 'Player Two';
-                console.log(this.winner);
                 return;
             }
 
@@ -38,8 +37,6 @@ class GameController {
                 board[1][i] === board[2][i]
             ) {
                 this.winner = board[0][i] === '❌' ? 'Player One' : 'Player Two';
-                console.log(this.winner);
-
                 return;
             }
         }
@@ -50,8 +47,6 @@ class GameController {
             board[1][1] === board[2][2]
         ) {
             this.winner = board[0][0] === '❌' ? 'Player One' : 'Player Two';
-            console.log(this.winner);
-
             return;
         }
 
@@ -61,16 +56,12 @@ class GameController {
             board[1][1] === board[2][0]
         ) {
             this.winner = board[0][2] === '❌' ? 'Player One' : 'Player Two';
-            console.log(this.winner);
-
             return;
         }
 
         // Check for a tie (if the board is full)
         if (board.flat().every((cell) => cell !== null)) {
             this.winner = "Tie";
-            console.log(this.winner);
-
             return;
         }
 

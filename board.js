@@ -32,6 +32,10 @@ class Board {
 
                 // Adding click event on all td's to handle placing a player piece
                 td.addEventListener('click', () => {
+                    if (gameController.winner !== null) {
+                        return;
+                    }
+
                     if (gameController.activePlayer === 'playerOne') {
                         playerOne.placePiece(td, gameController, this.board);
                     } else {
