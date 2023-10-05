@@ -7,6 +7,18 @@ class Board {
         this.board = [];
     }
 
+
+    /**
+     * 
+     * @param {*} boardContainer 
+     * @param {*} gameController 
+     * @param {*} playerOne 
+     * @param {*} playerTwo 
+     * 
+     * 
+     * 
+     */
+
     createBoard(boardContainer, gameController, playerOne, playerTwo) {
         const board = document.createElement('table')
         board.className = 'game-board'
@@ -20,11 +32,12 @@ class Board {
                 const td = document.createElement('td');
                 td.className = `${x}-${y}`;
 
+                // Adding click event on all td's to handle placing a player piece
                 td.addEventListener('click', () => {
                     if (gameController.activePlayer === 'playerOne') {
-                        playerOne.placePiece(td, gameController);
+                        playerOne.placePiece(td, gameController, this.board);
                     } else {
-                        playerTwo.placePiece(td, gameController);
+                        playerTwo.placePiece(td, gameController, this.board);
                     }
                 });
 
