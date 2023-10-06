@@ -4,6 +4,19 @@ class GameController {
     constructor() {
         this.activePlayer = 'playerOne';
         this.winner = null;
+        this.message = ''
+    }
+
+    updateMessageBox() {
+        const message = document.querySelector('.active-message');
+        message.innerHTML = `It is ${this.activePlayer} turn`
+
+        if (!this.winner) {
+            message.innerHTML = `It is ${this.activePlayer}'s turn`
+        } else {
+            message.innerHTML = this.winner !== 'Tie' ? `${this.winner} has won!` : `It is a tie!`
+        }
+
     }
 
     /**

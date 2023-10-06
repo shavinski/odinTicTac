@@ -21,6 +21,8 @@ class Board {
         const board = document.createElement('table')
         board.className = 'game-board'
 
+        gameController.updateMessageBox();
+
         for (let x = 0; x < this.width; x++) {
             const tr = document.createElement('tr');
             const row = [];
@@ -33,13 +35,16 @@ class Board {
                 // Adding click event on all td's to handle placing a player piece
                 td.addEventListener('click', () => {
                     if (gameController.winner !== null) {
+                        gameController.updateMessageBox();
                         return;
                     }
 
                     if (gameController.activePlayer === 'playerOne') {
                         playerOne.placePiece(td, gameController, this.board);
+                        gameController.updateMessageBox();
                     } else {
                         playerTwo.placePiece(td, gameController, this.board);
+                        gameController.updateMessageBox();
                     }
                 });
 
