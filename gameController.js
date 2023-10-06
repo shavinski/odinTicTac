@@ -1,8 +1,9 @@
 "use strict"
 
 class GameController {
-    constructor() {
-        this.activePlayer = 'playerOne';
+    constructor(p1, p2) {
+        this.players = [p1, p2]
+        this.activePlayer = this.players[0].name;
         this.winner = null;
         this.message = ''
     }
@@ -23,7 +24,7 @@ class GameController {
      * Responsible for switching active player after 
      */
     switchActivePlayer() {
-        this.activePlayer = this.activePlayer === 'playerOne' ? 'playerTwo' : 'playerOne';
+        this.activePlayer = this.activePlayer === this.players[0].name ? this.players[1].name : this.players[0].name;
     }
 
     /**
@@ -40,7 +41,7 @@ class GameController {
                 board[i][0] === board[i][1] &&
                 board[i][1] === board[i][2]
             ) {
-                this.winner = board[i][0] === '❌' ? 'Player One' : 'Player Two';
+                this.winner = board[i][0] === this.players[0].piece ? this.players[0].name : this.players[1].name;
                 return;
             }
 
@@ -49,7 +50,7 @@ class GameController {
                 board[0][i] === board[1][i] &&
                 board[1][i] === board[2][i]
             ) {
-                this.winner = board[0][i] === '❌' ? 'Player One' : 'Player Two';
+                this.winner = board[0][i] === this.players[0].piece ? this.players[0].name : this.players[1].name;
                 return;
             }
         }
@@ -59,7 +60,7 @@ class GameController {
             board[0][0] === board[1][1] &&
             board[1][1] === board[2][2]
         ) {
-            this.winner = board[0][0] === '❌' ? 'Player One' : 'Player Two';
+            this.winner = board[0][0] === this.players[0].piece ? this.players[0].name : this.players[1].name;
             return;
         }
 
@@ -68,7 +69,7 @@ class GameController {
             board[0][2] === board[1][1] &&
             board[1][1] === board[2][0]
         ) {
-            this.winner = board[0][2] === '❌' ? 'Player One' : 'Player Two';
+            this.winner = board[0][2] === this.players[0].piece ? this.players[0].name : this.players[1].name;
             return;
         }
 

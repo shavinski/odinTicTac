@@ -39,7 +39,7 @@ class Board {
                         return;
                     }
 
-                    if (gameController.activePlayer === 'playerOne') {
+                    if (gameController.activePlayer === gameController.players[0].name) {
                         playerOne.placePiece(td, gameController, this.board);
                         gameController.updateMessageBox();
                     } else {

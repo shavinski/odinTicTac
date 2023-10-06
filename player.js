@@ -31,11 +31,9 @@ class Player {
 
         if (!gameController.winner) {
             gameController.switchActivePlayer(board);
-        } else {
-            console.log('winner');
         }
 
-        return true;
+        return;
     }
 }
 
