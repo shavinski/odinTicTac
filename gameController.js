@@ -8,6 +8,11 @@ class GameController {
         this.message = ''
     }
 
+    updateStartScreen() {
+        const startMenu = document.querySelector('.start-menu');
+        startMenu.style.display = 'none'
+    }
+
     updateMessageBox() {
         const message = document.querySelector('.active-message');
         message.innerHTML = `It is ${this.activePlayer} turn`

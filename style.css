@@ -1,3 +1,28 @@
+.start-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-game {
+    margin: 20px;
+}
+
+.player-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
 .board-container {
     display: flex;
     justify-content: center;
@@ -7,7 +32,6 @@
 .game-board {
     width: 350px;
     height: 350px;
-    /* border: 2px black solid; */
 }
 
 .game-board td {
@@ -20,6 +44,7 @@
     font-size: 4em;
     font-weight: 900;
 }
+
 
 @media (min-width: 768px) {
     .game-board {

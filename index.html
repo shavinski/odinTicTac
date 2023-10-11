@@ -9,14 +9,36 @@
 </head>
 
 <body>
-    <h1>Tic-Tac-Toe</h1>
-    <div class="board-container">
+    <div class="start-menu">
+        <h1>Tic-Tac-Toe</h1>
+
+        <div>
+            <h2>Who do you want to play against?</h2>
+            <form class="game-form">
+                <div class="player-options">
+                    <div>
+                        <label for="human">Human</label>
+                        <input type="radio" id="human" value="human" name="player-choice">
+                    </div>
+
+                    <div>
+                        <label for="ai">AI</label>
+                        <input type="radio" id="ai" value="ai" name="player-choice">
+                    </div>
+                </div>
+
+                <button class="start-game" type="submit">Start Game!</button>
+            </form>
+        </div>
 
     </div>
-    <div>
-        Message Box
+
+    <div class="main-game">
+        <div class="board-container">
+        </div>
         <p class="active-message"></p>
     </div>
+
     <script src="game.js" type="module"></script>
 </body>
 
