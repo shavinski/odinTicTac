@@ -20,6 +20,26 @@ class Board {
     createBoard(boardContainer, gameController, playerOne, playerTwo) {
         const board = document.createElement('table')
         board.className = 'game-board'
+        board.addEventListener('click', (e) => {
+            const td = e.target
+            if (gameController.winner !== null) {
+                gameController.updateMessageBox();
+                return;
+            }
+
+            if (gameController.activePlayer === gameController.players[0].name) {
+                playerOne.humanMakeMove(td, gameController, this.board);
+            } else {
+                if (playerTwo.isAi) {
+                    playerTwo.aiMakeMove(gameController, this.board)
+                } else {
+                    playerTwo.humanMakeMove(td, gameController, this.board);
+                }
+
+            }
+            gameController.updateMessageBox();
+        })
+
 
         gameController.updateMessageBox();
 
@@ -31,30 +51,6 @@ class Board {
                 row.push(null);
                 const td = document.createElement('td');
                 td.className = `${x}-${y}`;
-
-                // Adding click event on all td's to handle placing a player piece
-                td.addEventListener('click', () => {
-                    if (gameController.winner !== null) {
-                        gameController.updateMessageBox();
-                        return;
-                    }
-
-                    console.log(this.board);
-
-                    if (gameController.activePlayer === gameController.players[0].name) {
-                        playerOne.placePiece(td, gameController, this.board);
-                    } else {
-                        if (playerTwo.isAi) {
-                            console.log('inside the isAi if');
-                            playerTwo.aiMakeMove(gameController, this.board)
-                        } else {
-                            playerTwo.placePiece(td, gameController, this.board);
-                        }
-
-                    }
-                    gameController.updateMessageBox();
-                });
-
                 tr.appendChild(td);
             }
 

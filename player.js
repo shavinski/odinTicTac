@@ -22,36 +22,22 @@ class Player {
      * @returns {boolean} - Returns `true` if the piece is successfully placed; otherwise, returns nothing.
      * 
      */
-    placePiece(td, gameController, board) {
+    humanMakeMove(td, gameController, board) {
 
         if (td.innerHTML !== "") {
             console.log('Silly goose this box is taken!')
             return;
         }
 
-        // if (!this.isAi) {
-        //     let [row, column] = this._generateRandomCoordinate();
-        //     const aiTd = document.getElementsByClassName(`${row}-${column}`);
-
-        //     console.log(row, column, aiTd);
-
-        //     while (aiTd[0].innerHTML !== "") {
-        //         [row, column] = this._generateRandomCoordinate();
-        //     }
-
-        //     aiTd[0].innerHTML = this.piece;
-        //     board[row][column] = this.piece;
-
-        // } else {
         td.innerHTML = this.piece;
         const [x, y] = td.className.split('-');
         board[x][y] = this.piece
-        // }
 
         gameController.determineWinOrTie(board)
 
         if (!gameController.winner) {
             gameController.switchActivePlayer(board);
+            this.aiMakeMove
         }
 
         return true;
@@ -60,6 +46,8 @@ class Player {
     aiMakeMove(gameController, board) {
         let [row, column] = this._generateRandomCoordinate();
         let aiTd = document.getElementsByClassName(`${row}-${column}`);
+        let gb = document.querySelector('.game-board');
+        console.log('inside AI make move', aiTd);
 
         while (aiTd[0].innerHTML !== "") {
             [row, column] = this._generateRandomCoordinate();
