@@ -39,13 +39,20 @@ class Board {
                         return;
                     }
 
+                    console.log(this.board);
+
                     if (gameController.activePlayer === gameController.players[0].name) {
                         playerOne.placePiece(td, gameController, this.board);
-                        gameController.updateMessageBox();
                     } else {
-                        playerTwo.placePiece(td, gameController, this.board);
-                        gameController.updateMessageBox();
+                        if (playerTwo.isAi) {
+                            console.log('inside the isAi if');
+                            playerTwo.aiMakeMove(gameController, this.board)
+                        } else {
+                            playerTwo.placePiece(td, gameController, this.board);
+                        }
+
                     }
+                    gameController.updateMessageBox();
                 });
 
                 tr.appendChild(td);

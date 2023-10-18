@@ -20,7 +20,7 @@ function startGameWithPlayerOrAi(e) {
 
     for (let i = 0; i < choice.length; i++) {
         if (choice[i].checked) {
-            playerTwo = choice[i].value === 'human' ? new Player('Player Two', '⭕') : new Player('AI', '⭕');
+            playerTwo = choice[i].value === 'human' ? new Player('Player Two', '⭕') : new Player('AI', '⭕', true);
             console.log(playerTwo);
             const board = new Board();
             const gameController = new GameController(playerOne, playerTwo);

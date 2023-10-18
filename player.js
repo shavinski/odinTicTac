@@ -1,11 +1,17 @@
 
 class Player {
-    constructor(name, piece) {
+    constructor(name, piece, isAi = false) {
         this.name = name;
         this.piece = piece;
+        this.isAi = isAi;
     }
 
+    _generateRandomCoordinate() {
+        let row = Math.floor(Math.random() * 3);
+        let column = Math.floor(Math.random() * 3)
 
+        return [row, column]
+    }
 
     /**
      * Place a player piece on the player 
@@ -23,9 +29,24 @@ class Player {
             return;
         }
 
+        // if (!this.isAi) {
+        //     let [row, column] = this._generateRandomCoordinate();
+        //     const aiTd = document.getElementsByClassName(`${row}-${column}`);
+
+        //     console.log(row, column, aiTd);
+
+        //     while (aiTd[0].innerHTML !== "") {
+        //         [row, column] = this._generateRandomCoordinate();
+        //     }
+
+        //     aiTd[0].innerHTML = this.piece;
+        //     board[row][column] = this.piece;
+
+        // } else {
         td.innerHTML = this.piece;
         const [x, y] = td.className.split('-');
         board[x][y] = this.piece
+        // }
 
         gameController.determineWinOrTie(board)
 
@@ -33,7 +54,28 @@ class Player {
             gameController.switchActivePlayer(board);
         }
 
-        return;
+        return true;
+    }
+
+    aiMakeMove(gameController, board) {
+        let [row, column] = this._generateRandomCoordinate();
+        let aiTd = document.getElementsByClassName(`${row}-${column}`);
+
+        while (aiTd[0].innerHTML !== "") {
+            [row, column] = this._generateRandomCoordinate();
+            aiTd = document.getElementsByClassName(`${row}-${column}`)
+        }
+
+        aiTd[0].innerHTML = this.piece;
+        board[row][column] = this.piece;
+
+        gameController.determineWinOrTie(board)
+
+        if (!gameController.winner) {
+            gameController.switchActivePlayer(board);
+        }
+
+        return true;
     }
 }
 
