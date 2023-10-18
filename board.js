@@ -27,15 +27,25 @@ class Board {
                 return;
             }
 
+            // if (gameController.activePlayer === gameController.players[0].name) {
+            //     playerOne.humanMakeMove(td, gameController, this.board);
+            // } else {
+            //     if (playerTwo.isAi) {
+            //         playerTwo.aiMakeMove(gameController, this.board)
+            //     } else {
+            //         playerTwo.humanMakeMove(td, gameController, this.board);
+            //     }
+
+            // }
+
             if (gameController.activePlayer === gameController.players[0].name) {
                 playerOne.humanMakeMove(td, gameController, this.board);
-            } else {
-                if (playerTwo.isAi) {
-                    playerTwo.aiMakeMove(gameController, this.board)
-                } else {
-                    playerTwo.humanMakeMove(td, gameController, this.board);
-                }
 
+                if (!gameController.determineWinOrTie(this.board) && playerTwo.isAi) {
+                    playerTwo.aiMakeMove(gameController, this.board);
+                }
+            } else {
+                playerTwo.humanMakeMove(td, gameController, this.board);
             }
             gameController.updateMessageBox();
         })

@@ -47,7 +47,7 @@ class GameController {
                 board[i][1] === board[i][2]
             ) {
                 this.winner = board[i][0] === this.players[0].piece ? this.players[0].name : this.players[1].name;
-                return;
+                return true;
             }
 
             if (
@@ -56,7 +56,7 @@ class GameController {
                 board[1][i] === board[2][i]
             ) {
                 this.winner = board[0][i] === this.players[0].piece ? this.players[0].name : this.players[1].name;
-                return;
+                return true;
             }
         }
 
@@ -66,7 +66,7 @@ class GameController {
             board[1][1] === board[2][2]
         ) {
             this.winner = board[0][0] === this.players[0].piece ? this.players[0].name : this.players[1].name;
-            return;
+            return true;
         }
 
         if (
@@ -75,14 +75,16 @@ class GameController {
             board[1][1] === board[2][0]
         ) {
             this.winner = board[0][2] === this.players[0].piece ? this.players[0].name : this.players[1].name;
-            return;
+            return true;
         }
 
         // Check for a tie (if the board is full)
         if (board.flat().every((cell) => cell !== null)) {
             this.winner = "Tie";
-            return;
+            return true;
         }
+
+        return false;
 
     }
 }
